@@ -83,7 +83,10 @@ static char * _xml_search_namespace_add ( char *search ) {
 	PKI_Free( my_arg );
 
 	ret = PKI_Malloc ( strlen( my_search ) + 1);
-	strncpy( ret, my_search, strlen(my_search) );
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstringop-overflow"
+        strncpy( ret, my_search, strlen(my_search) );
+#pragma GCC diagnostic pop
 
 	PKI_Free ( my_search );
 	return( ret );

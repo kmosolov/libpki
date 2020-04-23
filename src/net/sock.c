@@ -91,7 +91,7 @@ int _Listen (const char *hostname, int port, PKI_NET_SOCK_TYPE type) {
 	if (bind(fd, rp->ai_addr, rp->ai_addrlen) == -1 )
 	{
 		PKI_log_err("Can not bind to %s:%d (%s)", hostname, port,
-			hstrerror(h_errno));
+			strerror(errno));
 		close ( fd );
 		freeaddrinfo ( res );
 		return ( -1 );
